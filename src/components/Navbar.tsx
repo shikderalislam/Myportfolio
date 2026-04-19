@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import profileImage from '../assets/profile.jpg';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -47,8 +48,8 @@ export const Navbar = () => {
           }`}
         >
           <a href="#hero" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(255,255,255,0.16)] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_rgba(255,255,255,0.08))] font-head text-sm font-semibold text-white">
-              AI
+            <div className="h-10 w-10 overflow-hidden rounded-full border border-[rgba(255,255,255,0.16)] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.35),_rgba(255,255,255,0.08))] shadow-[0_8px_24px_rgba(0,0,0,0.18)]">
+              <img src={profileImage} alt="Shikder Al Islam" className="h-full w-full object-cover object-center" />
             </div>
             <div>
               <div className="font-head text-base tracking-[0.16em] text-white uppercase">Al Islam</div>
