@@ -2,7 +2,7 @@ const experiences = [
   {
     company: 'Softbeez',
     role: 'Software Engineer',
-    period: 'Mar 2024 - Present',
+    period: 'August 2024 - Present',
     summary:
       'Building dynamic websites and web apps with JavaScript, PHP, and Laravel, integrating APIs and shipping secure, production-ready experiences.',
   },
@@ -14,20 +14,19 @@ const experiences = [
       'Delivered tailored WordPress and web solutions for clients across industries, balancing speed, customization, and strong visual polish.',
   },
   {
-    company: 'Trends Bird Ltd',
-    role: 'Associate Software Engineer',
-    period: 'Sep 2023 - Mar 2024',
-    summary:
-      'Worked on customized software solutions that improved functionality and efficiency across client-facing products.',
-  },
-  
-  {
-    company: 'MEC Computer Club',
-    role: 'President',
-    period: 'Jan 2022 - Jan 2023',
+    company: 'FlyingPress | Flyingweb.co',
+    role: 'Technical Support Specialist',
+    period: 'March 2024 - July 2024',
     summary:
       'Led mentorship, programming initiatives, and collaborative learning in web development, AI, and career growth.',
   },
+  {
+    company: 'Trends Bird Ltd',
+    role: 'Associate Software Engineer',
+    period: 'Sep 2023 - Feb 2024',
+    summary:
+      'Worked on customized software solutions that improved functionality and efficiency across client-facing products.',
+  }
 ];
 
 export const Experience = () => {
