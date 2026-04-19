@@ -1,4 +1,38 @@
+import { useState } from 'react';
+import type { FormEvent } from 'react';
+
 export const Contact = () => {
+  const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setSubmitState('sending');
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/shikderalislam@gmail.com', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      setSubmitState('success');
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      setSubmitState('error');
+    }
+  };
+
   return (
     <section id="contact" className="section-wrap reveal pb-20">
       <div className="premium-card relative overflow-hidden px-6 py-10 md:px-10 md:py-14">
@@ -33,9 +67,8 @@ export const Contact = () => {
           </div>
 
           <form
-            action="https://formsubmit.co/shikderalislam@gmail.com"
-            method="POST"
             className="contact-form"
+            onSubmit={handleSubmit}
           >
             <input type="hidden" name="_subject" value="New portfolio contact message" />
             <input type="hidden" name="_captcha" value="false" />
@@ -64,10 +97,23 @@ export const Contact = () => {
 
             <button
               type="submit"
+              disabled={submitState === 'sending'}
               className="mt-5 inline-flex items-center justify-center rounded-full bg-[#d6b173] px-7 py-4 text-sm font-semibold uppercase tracking-[0.24em] text-[#08101c] transition-transform duration-300 hover:-translate-y-1"
             >
-              Send Message
+              {submitState === 'sending' ? 'Sending...' : 'Send Message'}
             </button>
+
+            {submitState === 'success' && (
+              <p className="mt-4 text-sm uppercase tracking-[0.18em] text-[#d6b173]">
+                Your message was sent successfully.
+              </p>
+            )}
+
+            {submitState === 'error' && (
+              <p className="mt-4 text-sm uppercase tracking-[0.12em] text-[#ffb4a5]">
+                Message could not be sent. Please activate FormSubmit first, then try again.
+              </p>
+            )}
           </form>
         </div>
       </div>
